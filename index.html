@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1424">
+  <meta name="description" content="HVAC Academy: interactieve Nederlandstalige opleiding elektriciteit, koeltechniek, warmtepompen, ventilatie en storingsdiagnose met schema's, simulators en toetsen.">
+  <title>HVAC Academy — Leer elektriciteit & HVAC van nul tot expert</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="curriculum.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Hoofdnavigatie">
+      <a class="brand" href="#dashboard" id="brandHome" aria-label="HVAC Academy startpagina">
+        <span class="brand-mark"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M22 4 9 22h11l-3 14 15-20H21l1-12Z" fill="currentColor"/></svg></span>
+        <span><strong>HVAC<span>ACADEMY</span></strong><small>ELEKTRICITEIT & TECHNIEK</small></span>
+      </a>
+      <div class="sidebar-search">
+        <span aria-hidden="true">⌕</span><input id="globalSearch" type="search" placeholder="Zoek een onderwerp..." aria-label="Zoek lessen en onderwerpen"><kbd>/</kbd>
+      </div>
+      <div class="nav-label">ONTDEKKEN</div>
+      <nav class="main-nav" id="mainNav" aria-label="Secties">
+        <button data-page="dashboard" class="nav-item active"><span class="nav-icon">▦</span>Dashboard</button>
+        <button data-page="leerpad" class="nav-item"><span class="nav-icon">◫</span>Alle hoofdstukken <span class="nav-counter">22</span></button>
+        <button data-page="simulator" class="nav-item"><span class="nav-icon">⌁</span>Interactief lab</button>
+        <button data-page="examen" class="nav-item"><span class="nav-icon">◇</span>Oefentoetsen</button>
+        <button data-page="woordenboek" class="nav-item"><span class="nav-icon">≡</span>Woordenboek</button>
+        <button data-page="favorieten" class="nav-item"><span class="nav-icon">☆</span>Mijn favorieten</button>
+      </nav>
+      <div class="nav-label category-label">LEERDOMEINEN</div>
+      <div class="domain-nav" id="domainNav"></div>
+      <div class="sidebar-spacer"></div>
+      <div class="mentor-card">
+        <div class="mentor-emoji">⚡</div>
+        <strong>Word de technieker<br>die alles begrijpt.</strong>
+        <p>Leer, experimenteer en test je kennis op je eigen tempo.</p>
+        <button id="sidebarContinue" class="mentor-link">Verder leren <span aria-hidden="true">↗</span></button>
+      </div>
+      <div class="sidebar-footer">HVAC Academy <span>•</span> Editie 2026 <span>•</span> België</div>
+    </aside>
+
+    <div class="main-column">
+      <header class="topbar">
+        <div class="topbar-leading">
+          <button class="mobile-menu icon-button" id="menuToggle" aria-label="Menu openen" aria-expanded="false">☰</button>
+          <div class="breadcrumb"><span>OPLEIDING</span><b>/</b><span id="breadcrumbLabel">Dashboard</span></div>
+        </div>
+        <div class="topbar-actions">
+          <span class="online-pill"><i></i> Zelfstudie • op eigen tempo</span>
+          <button id="themeToggle" class="icon-button theme-button" aria-label="Kleurthema veranderen" title="Licht/donker thema">☾</button>
+          <button id="resetBtn" class="icon-button reset-button" aria-label="Voortgang beheren" title="Voortgang beheren">↺</button>
+          <div class="avatar" aria-label="Jouw studieomgeving">HV</div>
+        </div>
+      </header>
+      <main class="content" id="app" tabindex="-1">
+        <section class="loading-state"><div class="spinner"></div><h1>Jouw opleiding wordt geopend…</h1><p>Elektriciteit, koeltechniek en HVAC van A tot Z.</p></section>
+      </main>
+      <footer class="site-footer"><span>HVAC ACADEMY — TECHNISCHE ZELFSTUDIE</span><span>Educatieve simulaties; geen vervanging voor praktijkopleiding of vereiste erkenningen.</span></footer>
+    </div>
+  </div>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="confirmDialog" class="confirm-dialog">
+    <form method="dialog">
+      <span class="eyebrow">STUDIEVOORTGANG</span>
+      <h2>Voortgang opnieuw beginnen?</h2>
+      <p>Dit wist je lokaal opgeslagen hoofdstukresultaten, oefenscores en favorieten op dit toestel. Je kunt dit niet ongedaan maken.</p>
+      <div class="dialog-actions"><button value="cancel" class="btn btn-ghost">Annuleren</button><button value="confirm" class="btn btn-danger">Alles wissen</button></div>
+    </form>
+  </dialog>
+</body>
+</html>
