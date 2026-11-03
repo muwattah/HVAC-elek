@@ -137,3 +137,6 @@ body.dark .lab-warning{background:#45351d;color:#f8d9a1}body.dark .sidebar{backg
 }
 @media(max-width:420px){.module-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr 1fr}.stat-card{display:block}.stat-icon{margin-bottom:8px}.hero h1{font-size:30px}.topbar-actions .reset-button{display:none}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Mobile feature highlight: override the desktop inline two-column layout. */
+@media(max-width:760px){.feature-card{grid-template-columns:1fr!important}.feature-card>div:last-child{min-height:210px!important}.feature-card>div:last-child svg{height:230px}}
