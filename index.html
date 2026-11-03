@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
   <link rel="stylesheet" href="styles.css">
   <script defer src="curriculum.js"></script>
   <script defer src="app.js"></script>
@@ -63,6 +65,13 @@
       <footer class="site-footer"><span>HVAC ACADEMY — TECHNISCHE ZELFSTUDIE</span><span>Educatieve simulaties; geen vervanging voor praktijkopleiding of vereiste erkenningen.</span></footer>
     </div>
   </div>
+  <script>
+    if ("serviceWorker" in navigator && location.protocol === "https:") {
+      window.addEventListener("load", function() {
+        navigator.serviceWorker.register("./sw.js").catch(function() {});
+      });
+    }
+  </script>
   <div class="mobile-overlay" id="mobileOverlay"></div>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <dialog id="confirmDialog" class="confirm-dialog">
