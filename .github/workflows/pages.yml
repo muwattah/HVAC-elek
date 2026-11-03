@@ -1,0 +1,57 @@
+name: Deploy HVAC Academy to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "hvac-pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+      - name: Check JavaScript syntax
+        run: |
+          node --check curriculum.js
+          node --check app.js
+          node --check sw.js
+      - name: Check learning content
+        run: |
+          node - <<'NODE'
+          global.window = {};
+          require("./curriculum.js");
+          const modules = window.HVAC_DATA;
+          const count = modules.reduce((sum, m) => sum + m.topics.length, 0);
+          const questions = modules.reduce((sum, m) => sum + m.questions.length, 0);
+          if (modules.length !== 22 || count !== 264 || questions !== 44) {
+            throw new Error("Opleidingsinhoud niet compleet");
+          }
+          for (const m of modules) {
+            if (!m.questions.every(q => q.options.length === 4 && q.why)) {
+              throw new Error("Onvolledige toetsvraag in " + m.title);
+            }
+          }
+          console.log(modules.length + " hoofdstukken; " + count + " onderwerpen; " + questions + " vragen.");
+          NODE
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4
