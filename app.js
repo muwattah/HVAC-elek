@@ -65,7 +65,7 @@ function dashboard(){
  '<div class="stats-grid">'+statCard("◫",chapters.length,"Uitgebreide hoofdstukken","#3b75f5","#eaf2ff")+statCard("✓",saved.completed.length,"Hoofdstukken voltooid","#13a889","#e7fbf3")+statCard("✎",chapters.reduce(function(n,c){return n+c.questions.length;},0),"Kennistoetsvragen","#9765df","#f3edff")+statCard("◈","4","Interactieve simulators","#db8d31","#fff3df")+'</div>'+
  '<section class="section-block">'+routeCard()+'</section>'+
  '<section class="section-block"><div class="section-heading"><div><span class="eyebrow">BEGIN HIER</span><h2>Ontdek je leertraject</h2><p>De eerste fundamenten voor iedere HVAC-technieker.</p></div><button class="section-link" data-action="goto" data-page="leerpad">Alle 22 modules bekijken →</button></div><div class="module-grid">'+chapters.slice(0,6).map(moduleCard).join("")+'</div></section>'+
- '<section class="section-block"><div class="section-heading"><div><span class="eyebrow">LEREN DOOR TE DOEN</span><h2>Techniek wordt helder in beeld</h2><p>Volg het circuit, verander een waarde en zie het resultaat.</p></div><button class="section-link" data-action="goto" data-page="simulator">Open het lab →</button></div><div class="white-card" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0"><div style="padding:24px 28px;align-self:center"><span class="pill">INTERACTIEF</span><h3 style="margin:17px 0 10px;font-size:23px">Zie hoe elektriciteit werkt.</h3><p style="font-size:13px">Leer spanning, weerstand en stroom begrijpen met een veilige virtuele schakeling. Daarna oefen je met vermogen, luchtdebiet en warmtepompen.</p><button class="btn btn-primary" data-action="goto" data-page="simulator">Experimenteer nu →</button></div><div style="background:#0d2035;min-height:240px;display:grid;place-items:center;overflow:hidden">'+diagram("circuit")+'</div></div></section>';
+ '<section class="section-block"><div class="section-heading"><div><span class="eyebrow">LEREN DOOR TE DOEN</span><h2>Techniek wordt helder in beeld</h2><p>Volg het circuit, verander een waarde en zie het resultaat.</p></div><button class="section-link" data-action="goto" data-page="simulator">Open het lab →</button></div><div class="white-card feature-card" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0"><div style="padding:24px 28px;align-self:center"><span class="pill">INTERACTIEF</span><h3 style="margin:17px 0 10px;font-size:23px">Zie hoe elektriciteit werkt.</h3><p style="font-size:13px">Leer spanning, weerstand en stroom begrijpen met een veilige virtuele schakeling. Daarna oefen je met vermogen, luchtdebiet en warmtepompen.</p><button class="btn btn-primary" data-action="goto" data-page="simulator">Experimenteer nu →</button></div><div style="background:#0d2035;min-height:240px;display:grid;place-items:center;overflow:hidden">'+diagram("circuit")+'</div></div></section>';
 }
 function listPage(){
  var filtered=chapters.filter(function(c){
@@ -140,7 +140,7 @@ function diagram(type,v){
  line("M245 154H468","#ffaa7c",true)+
  '<circle cx="358" cy="152" r="41" fill="#26465b" stroke="#daaf80"/>'+txt(358,157,"Q",26,"#fff3d1")+txt(359,246,"WARMTESTROOM",13,"#e1b897");
  }else if(type==="diagnostics"){
- inside=box(45,107,143,77,"SYMPT0OM","observeren","#64b5dd","#22445f")+box(218,107,142,77,"METING","verifiëren","#7ccee5","#204a5d")+box(390,107,141,77,"OORZAAK","analyseren","#b8a5ec","#42395a")+box(562,107,118,77,"TEST","bevestigen","#70dabb","#204e48")+
+ inside=box(45,107,143,77,"SYMPTOOM","observeren","#64b5dd","#22445f")+box(218,107,142,77,"METING","verifiëren","#7ccee5","#204a5d")+box(390,107,141,77,"OORZAAK","analyseren","#b8a5ec","#42395a")+box(562,107,118,77,"TEST","bevestigen","#70dabb","#204e48")+
  line("M190 146H215M362 146H388M533 146H559","#82cbe8",true)+txt(360,238,"GEEN GOKWERK · WEL CONTROLEERBARE METINGEN",11,"#a5c9df");
  }else if(type==="safety"){
  inside='<path d="M359 66l95 37v75q-4 65-95 95-91-30-95-95v-75Z" fill="#173d4b" stroke="#75dace" stroke-width="4"/>'+
@@ -193,7 +193,7 @@ function lessonQuizView(c,done){
  }
  var q=c.questions[z.index];if(!q)return "";
  return '<div class="quiz-card"><span class="quiz-eyebrow">KENNISCONTROLE · VRAAG '+(z.index+1)+' VAN '+c.questions.length+'</span><div class="quiz-progress"><span style="width:'+((z.index)/c.questions.length*100)+'%"></span></div><h3>'+html(q.q)+'</h3>'+answerMarkup(q,z,"lesson")+
- (z.answered?'<div class="quiz-feedback '+(z.selected===q.correct?"good":"bad")+'"><strong>'+(z.selected===q.correct?"✓ Goed antwoord!":"✕ Nog niet juist.")+'</strong><div>'+html(q.why)+'</div></div><button class="btn btn-primary" data-action="lesson-next">'+(z.index===c.questions.length-1?"Bekijk resultaat →":"Volgende vraag →")+'</button>':'<p style="font-size:12px;margin-top:14px">Kies één antwoord. Je krijgt meteen uitleg.</p>')+'</div>';
+ (z.answered?'<div role="status" class="quiz-feedback '+(z.selected===q.correct?"good":"bad")+'"><strong>'+(z.selected===q.correct?"✓ Goed antwoord!":"✕ Nog niet juist.")+'</strong><div>'+html(q.why)+'</div></div><button class="btn btn-primary" data-action="lesson-next">'+(z.index===c.questions.length-1?"Bekijk resultaat →":"Volgende vraag →")+'</button>':'<p style="font-size:12px;margin-top:14px">Kies één antwoord. Je krijgt meteen uitleg.</p>')+'</div>';
 }
 function finishLesson(){
  var z=state.lessonQuiz,c=chapter(z.id);z.finished=true;
@@ -219,7 +219,7 @@ function examView(){
  }
  var item=z.items[z.index],q=item.question;
  return '<span class="eyebrow">GEMENGDE KENNISTOETS</span><h1 class="page-title">Vraag '+(z.index+1)+' van '+z.items.length+'</h1><p class="page-subtitle">Onderwerp: '+html(item.chapter.title)+'</p><div class="white-card" style="max-width:840px;padding:27px;margin-top:22px"><div class="quiz-progress"><span style="width:'+(100*z.index/z.items.length)+'%"></span></div><h2 style="font-size:21px;margin:17px 0 20px">'+html(q.q)+'</h2>'+answerMarkup(q,z,"exam")+
- (z.answered?'<div class="quiz-feedback '+(z.selected===q.correct?"good":"bad")+'"><strong>'+(z.selected===q.correct?"✓ Correct!":"✕ Niet juist.")+'</strong><div>'+html(q.why)+'</div></div><button class="btn btn-primary" data-action="exam-next">'+(z.index===z.items.length-1?"Bekijk je resultaat →":"Volgende vraag →")+'</button>':'<p style="font-size:12px;margin-top:14px">Je krijgt na je keuze de uitleg.</p>')+'</div>';
+ (z.answered?'<div role="status" class="quiz-feedback '+(z.selected===q.correct?"good":"bad")+'"><strong>'+(z.selected===q.correct?"✓ Correct!":"✕ Niet juist.")+'</strong><div>'+html(q.why)+'</div></div><button class="btn btn-primary" data-action="exam-next">'+(z.index===z.items.length-1?"Bekijk je resultaat →":"Volgende vraag →")+'</button>':'<p style="font-size:12px;margin-top:14px">Je krijgt na je keuze de uitleg.</p>')+'</div>';
 }
 var labDefs=[
 {id:"ohm",label:"⚡ Wet van Ohm",description:"Onderzoek hoe spanning en weerstand de stroom bepalen."},
