@@ -7,7 +7,7 @@ Een Nederlandstalige interactieve zelfstudiewebsite voor toekomstige HVAC-techni
 - 22 leerhoofdstukken, verdeeld over 5 vakdomeinen.
 - 264 leeronderwerpen met kernuitleg, formules, praktijkvoorbeelden en waarschuwingen.
 - 44 kennistoetsvragen met directe uitleg en een gemengd oefenexamen.
-- 10 soorten interactieve/technische SVG-tekeningen.
+- 12 soorten interactieve/technische SVG-tekeningen.
 - 4 interactieve simulators: Wet van Ohm, elektrisch energieverbruik, luchtdebiet en warmtepomp-COP.
 - 53 doorzoekbare technische woordenboekbegrippen.
 - Dashboard, leerpad, favorieten, voortgang, zoekfunctie en licht/donker thema.
