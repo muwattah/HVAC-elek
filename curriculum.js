@@ -10,11 +10,11 @@ var data=[];
 function add(x){x.id=data.length+1;data.push(x);}
 add(M("Basis elektriciteit","basis","⚡",55,"Van spanning en stroom tot veilige elektrische circuits.",
 "Spanning, stroom en weerstand|Wet van Ohm|Elektrisch vermogen|Gelijkstroom en wisselstroom|Serie- en parallelschakelingen|230 V en 400 V|Eenfasig en driefasig|Frequentie en cos φ|Aarding|Zekeringen en differentieelschakelaars|Multimeter|Schema's lezen",
-"De drie grootheden die alles verklaren","Spanning (U) is het elektrische potentiaalverschil, stroom (I) is de elektrische lading die per seconde passeert en weerstand (R) beperkt de stroom. Met die drie begrippen begrijp je waarom een ventilatormotor draait, een verwarmingselement warm wordt en een zekering aanspreekt.",
-"Spanning meet je parallel over twee punten en druk je uit in volt (V).|Stroom loopt door een gesloten stroomkring en wordt gemeten in ampère (A).|Weerstand druk je uit in ohm (Ω); bij een ohmse belasting geldt de wet van Ohm.",
+"De drie grootheden die alles verklaren","Spanning (U) is het elektrische potentiaalverschil, stroom (I) is de elektrische lading die per seconde passeert en weerstand (R) beperkt de stroom. Met die drie begrippen begrijp je de basis van elektrische belastingen. Een zuiver ohmse weerstand volgt rechtstreeks de wet van Ohm. Bij echte ventilatormotoren spelen daarnaast inductie, arbeidsfactor en rendement een rol.",
+"Spanning meet je met een geschikte voltmeter parallel tussen twee punten en druk je uit in volt (V).|Stroom loopt door een gesloten stroomkring en wordt gemeten in ampère (A).|Weerstand druk je uit in ohm (Ω); bij een ohmse belasting geldt de wet van Ohm.|Bij sinusvormige wisselstroom is voor eenfasig actief vermogen P = U × I × cos φ; voor een symmetrische driefasige belasting P = √3 × Ulijn × Ilijn × cos φ. U en I zijn effectieve waarden.",
 "Een eenvoudige weerstand van 46 Ω op 230 V zou theoretisch 5 A opnemen. Met P = U × I kom je op 1.150 W. Echte motoren zijn complexer door inductie en arbeidsfactor.",
 "Een spanning kunnen meten betekent niet dat je veilig aan een installatie kunt werken. Werk spanningsloos en controleer dit volgens de geldende veiligheidsprocedure.",
-"U = I × R   •   P = U × I","circuit",[
+"U = I × R   •   P = U × I (gelijkstroom of ohms, cos φ = 1)","circuit",[
 Q("Wat is de eenheid van elektrische stroom?","Ampère (A)","Volt (V)","Ohm (Ω)","Watt (W)","Stroomsterkte druk je uit in ampère. Volt is spanning, ohm weerstand en watt vermogen."),
 Q("Een ohmse weerstand is 20 Ω en er staat 100 V over. Welke stroom loopt er?","5 A","0,2 A","20 A","2.000 A","Wet van Ohm: I = U / R = 100 / 20 = 5 A.")
 ]));
@@ -24,7 +24,7 @@ add(M("Gevorderde elektriciteit","basis","🔌",65,"Motoren, relais, beveiliging
 "Maak onderscheid tussen hoofdstroomkring en stuurkring.|Een thermische motorbeveiliging beschermt tegen ongewenste overbelasting binnen zijn ontwerp.|Een frequentieregelaar regelt de snelheid van geschikte wisselstroommotoren via een veranderende uitgangsfrequentie.",
 "Bij een luchtbehandelingskast geeft de regelaar een startcommando. De contactor trekt aan of de frequentieregelaar start de ventilator. Beveiligingen onderbreken de werking bij een storing.",
 "Verbind nooit zomaar een motor met een andere spanning of schakelconfiguratie. Controleer typeplaatje, datasheet en schema.",
-"n ≈ 120 × f / p   (synchroon toerental, p = aantal polen)","motor",[
+"nₛ = 120 × f / p (omw/min; p = polental; asynchrone rotor draait trager door slip)","motor",[
 Q("Wat doet een contactor in een HVAC-stuurkring?","Elektrisch een vermogenskring schakelen","Een koelmiddel mechanisch comprimeren","De luchtdruk in een kanaal meten","Water ontkalken","De spoel bedient contacten die de vermogenskring schakelen."),
 Q("Welke component wordt vaak gebruikt voor toerentalregeling van een geschikte AC-motor?","Frequentieregelaar (VFD)","Smeltzekering","Drukschakelaar","Expansievat","Een VFD verandert onder meer de uitgangsfrequentie en daarmee het toerental.")
 ]));
@@ -101,7 +101,7 @@ Q("Wat betekent inverterregeling bij een geschikte aircocompressor?","Het toeren
 add(M("Ventilatietechniek","hvac","🌀",60,"Systemen A tot D, luchtkanalen, WTW en luchtdebieten.",
 "Ventilatiesystemen A B C D|Mechanische ventilatie|Balansventilatie|Warmteterugwinning|Ventilatoren|Luchtkanalen|Luchtdebiet|Luchtsnelheid|Drukverlies|Filters|Geluid|Inregelen",
 "Goede luchtkwaliteit begint bij gecontroleerde stroming","Ventilatie voert vervuilde of vochtige lucht af en brengt verse lucht binnen. Het ontwerp bepaalt de richting en hoeveelheid lucht. Bij balansventilatie met warmteterugwinning wordt een deel van de warmte uit afgevoerde lucht overgedragen.",
-"Debiet druk je bijvoorbeeld uit in m³/h.|Drukverlies in kanalen stijgt met onder meer debiet, lengte en hulpstukken.|Filters moeten passend gekozen en onderhouden worden.",
+"Debiet druk je bijvoorbeeld uit in m³/h.|Drukverlies in kanalen stijgt met onder meer debiet, lengte en hulpstukken.|Filters moeten passend gekozen en onderhouden worden.|In België: systeem A = natuurlijke toe- en afvoer; B = mechanische toevoer en natuurlijke afvoer; C = natuurlijke toevoer en mechanische afvoer; D = mechanische toe- en afvoer.",
 "Een ventilatiesysteem levert 180 m³/h aan een woning. Bij een groter filterdrukverlies kan hetzelfde systeem extra ventilatorvermogen vragen of minder debiet halen, afhankelijk van de regeling.",
 "Meer ventilatorsnelheid is niet altijd de oplossing voor een verkeerd ontworpen kanaalnet.",
 "Qv = v × A","airflow",[
@@ -190,10 +190,10 @@ Q("Wat doe je nadat de oorzaak van een storing verholpen is?","De werking en bev
 ]));
 add(M("Veiligheid, wetgeving & attesten","praktijk","🛡",65,"AREI, F-gassen, veiligheid, certificering en Vlaamse regels.",
 "Elektrische veiligheid|AREI|LOTO|PBM|Werken op hoogte|Koudemiddelveiligheid|F-gassen|Erkenningsvoorwaarden|EPB|Gasveiligheid|VCA|Afvalbeheer",
-"Veilig werken is altijd onderdeel van de techniek","In België gelden elektrische voorschriften, veiligheidsregels en specifieke voorwaarden voor bepaalde HVAC-werkzaamheden. Wie aan installaties werkt moet de gevaren kennen, passende veiligheidsmaatregelen nemen en nagaan welke erkenningen nodig zijn.",
-"Werk niet aan onder spanning staande elektrische circuits zonder de vereiste opleiding en veilige werkwijze.|Koudemiddelen en druksystemen kennen specifieke risico's en voorschriften.|Wetgeving en certificeringsvereisten wijzigen: raadpleeg actuele officiële bronnen.",
+"Veilig werken is altijd onderdeel van de techniek","In België zijn het AREI, welzijnsregels en gewestelijke erkenningsvoorwaarden relevant voor HVAC-werk. Europese F-gasregels (EU 2024/573 en EU 2024/2215) bevatten bovendien certificeringsbepalingen voor bepaalde alternatieve koudemiddelen, zoals koolwaterstoffen, CO₂ en ammoniak. Controleer altijd de actuele toepassing, categorieën en overgangsregels bij de bevoegde overheid.",
+"Schakel vóór werkzaamheden volgens de veiligheidsprocedure af, beveilig tegen herinschakelen en controleer de spanningsloze toestand met geschikt meetgereedschap.|Koudemiddelen en druksystemen kennen specifieke risico's en voorschriften.|Werk met F-gassen aan stationaire airco's en warmtepompen vereist in Vlaanderen voor aangewezen werkzaamheden doorgaans een erkend koeltechnicus en, voor bepaalde bedrijfsactiviteiten, een erkend koeltechnisch bedrijf.|De EU 2024/2215 onderscheidt onder meer certificaattypen A1, A2, B, C, D en E; raadpleeg actuele Vlaamse erkenningsregels en eventuele overgangsmaatregelen.",
 "Bij koelmiddelwerk ga je vooraf na welk middel aanwezig is en welke vereiste certificering, apparatuur en veiligheidsprocedure van toepassing zijn.",
-"Deze website is studiehulp, geen certificaat, keuring, formele bevoegdheid of vervanging van het AREI.",
+"Deze website is studiehulp, geen certificaat, keuring, formele bevoegdheid of vervanging van het AREI en andere actuele regelgeving. Controleer eisen en toepasselijke uitzonderingen bij FOD Economie en Vlaanderen.be.",
 "risico herkennen → beveiligen → controleren","safety",[
 Q("Waarvoor staat AREI in België?","Algemeen Reglement op de Elektrische Installaties","Arbeidsregeling voor Energie en Isolatie","Algemene Richtlijn voor Elektrische Inverters","Automatische Regeling van Elektrische Installateurs","Het AREI bevat voorschriften rond elektrische installaties."),
 Q("Wat is een juiste houding tegenover een veiligheidsbeveiliging?","De functie behouden en storingen veilig onderzoeken","Tijdelijk kortsluiten om sneller te werken","Uitschakelen bij een hoge energiefactuur","Neerleggen bij de eindklant","Beveiligingsfuncties zijn essentieel en mogen niet zomaar worden overbrugd.")
