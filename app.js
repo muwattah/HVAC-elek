@@ -90,20 +90,28 @@ function diagram(type,v){
  v=v||{};
  var inside="";
  if(type==="circuit"){
- var volt=v.voltage!=null?format(v.voltage,0)+" V":"230 V";
- inside='<g>'+line("M190 92H500V218H190V92","#6dbfe7",false)+line("M220 92H480","#68ead9",true)+
- '<rect x="326" y="80" width="69" height="25" rx="6" fill="#2c5772" stroke="#8be2ee"/><path d="M335 91l9-6 10 12 10-12 10 12 10-6" stroke="#e6faff" fill="none" stroke-width="2.4"/>'+
- '<path d="M190 125h-30m0 0v61m0 0h30" stroke="#c0e9f6" stroke-width="3"/><path d="M145 143h30m-24 11h18" stroke="#73dcff" stroke-width="4"/>'+
- '<circle cx="500" cy="155" r="25" fill="#21435b" stroke="#65dfd9" stroke-width="2"/>'+txt(500,161,"M",20,"#b8fff5")+
- '<circle cx="250" cy="218" r="26" fill="#183a53" stroke="#81c4f5" stroke-width="2"/>'+txt(250,224,"A",18,"#d6f4ff")+
- txt(360,65,"OHMSE BELASTING",11,"#8aafc5")+txt(360,136,"R = "+(v.resistance||"46")+" Ω",14,"#9cf2ee")+txt(140,209,volt,14,"#beeaff")+txt(500,197,"Motor",12,"#9bbdd3")+txt(360,255,"Gesloten stroomkring",13,"#a5bcd0")+'</g>';
+ var volt=v.voltage!=null?format(v.voltage,0)+" V":"24 V";
+ var resistance=v.resistance!=null?v.resistance:48;
+ var current=v.voltage!=null&&v.resistance!=null?format(v.voltage/v.resistance,2)+" A":"I = U / R";
+ inside='<g>'+
+ '<path d="M166 95H326M397 95H554V220H334M286 220H166V190M166 130V95" fill="none" stroke="#80cbea" stroke-width="3.5" stroke-linejoin="round"/>'+
+ '<circle cx="166" cy="160" r="30" fill="#123650" stroke="#75dcea" stroke-width="3"/>'+
+ '<path d="M149 160c7-15 14-15 21 0s14 15 21 0" stroke="#a8f6ff" stroke-width="2.8" fill="none"/>'+
+ '<rect x="326" y="82" width="71" height="26" rx="4" fill="#255773" stroke="#9ce6f2" stroke-width="2"/>'+
+ '<path d="M337 94l9-6 10 12 10-12 10 12 10-6" stroke="#f0ffff" fill="none" stroke-width="2.1"/>'+
+ '<path d="M326 95V155H341M382 155H397V95" fill="none" stroke="#6aafda" stroke-width="2.5"/>'+
+ '<circle cx="361" cy="155" r="21" fill="#193f59" stroke="#74c7ff" stroke-width="2"/>'+txt(361,161,"V",15,"#e0f5ff")+
+ '<circle cx="310" cy="220" r="24" fill="#183a53" stroke="#81c4f5" stroke-width="2.5"/>'+txt(310,226,"A",18,"#d6f4ff")+
+ '<circle cx="554" cy="220" r="5" fill="#68e2d4"/>'+
+ txt(362,63,"OHMSE WEERSTAND",12,"#a8cbdd")+txt(166,211,"~ "+volt,14,"#beeaff")+txt(362,190,"R = "+resistance+" Ω",14,"#9cf2ee")+
+ txt(450,255,current,14,"#a7e7e4")+txt(362,285,"V parallel · A in serie · wisselspanning",11,"#a5bcd0")+'</g>';
  }else if(type==="refrigeration"||type==="heatpump"){
- inside=line("M174 104H544V218H174V104","#f69b80",false)+line("M174 218H544","#64c7f0",true)+
+ inside='<path d="M241 127H482" fill="none" stroke="#f69b80" stroke-width="4" marker-end="url(#arrr)"/><path d="M555 164V197" fill="none" stroke="#f69b80" stroke-width="4" marker-end="url(#arrr)"/><path d="M482 235H241" fill="none" stroke="#64c7f0" stroke-width="4" marker-end="url(#arrb)"/><path d="M173 198V165" fill="none" stroke="#64c7f0" stroke-width="4" marker-end="url(#arrb)"/>'+
  box(105,91,136,73,"COMPRESSOR","druk ↑","#faac91","#563340")+
  box(482,91,146,73,"CONDENSOR","warmte afgeven","#fa9b83","#56343b")+
  box(482,198,146,73,"EXPANSIE","druk ↓","#72c5e7","#1b415a")+
  box(105,198,136,73,"VERDAMPER","warmte opnemen","#72c5e7","#1a425c")+
- '<path d="M240 127H482M555 165V197M482 235H240M173 198V165" fill="none" stroke="#8caec6" stroke-width="3" stroke-dasharray="6 8"/>'+
+ '<text x="363" y="109" text-anchor="middle" fill="#fac0ac" font-size="10">HOGEDRUKDAMP →</text><text x="358" y="227" text-anchor="middle" fill="#9fdaee" font-size="10">← LAGEDRUKMENGSEL</text>'+
  txt(354,86,"HOGE DRUK · WARM",12,"#ffae99")+txt(354,254,"LAGE DRUK · KOUD",12,"#8fdfff")+
  '<circle cx="355" cy="165" r="48" fill="#1d4059" stroke="#4f809b"/>'+txt(355,159,type==="heatpump"?"WARMTE":"KOELKRING",14,"#d6eefc")+txt(355,178,"← energie →",12,"#88bccf");
  }else if(type==="airflow"){
