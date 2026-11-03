@@ -171,6 +171,15 @@ function renderLesson(){
  }else if(tab==="praktijk"){
  content='<span class="eyebrow">STAP 03 · KOPPELING MET DE PRAKTIJK</span><h2>Zo herken je dit op de werkvloer</h2><p>'+html(c.example)+'</p><div class="info-note warn">⚠ <strong>Veelgemaakte fout:</strong> '+html(c.mistake)+'</div><h3>Alle onderwerpen van dit hoofdstuk</h3><div class="topics-list">'+c.topics.map(function(t,i){return '<div class="topic-pill"><b>'+String(i+1).padStart(2,"0")+'</b> '+html(t)+'</div>';}).join("")+'</div><p>Oefen met de technische tekening en herhaal de begrippen tot je ze zonder spiekbrief kunt uitleggen.</p><button class="btn btn-primary" data-action="lesson-tab" data-tab="toets">Doe de kennistoets →</button>';
  }else{content=lessonQuizView(c,done);}
+ if(c.id===19 && tab!=="toets"){
+  content += '<div class="mini-separator"></div><h3>Actuele officiële bronnen</h3><p>De Vlaamse en Europese certificeringsvoorwaarden kunnen wijzigen. Controleer de precieze activiteit, koudemiddelcategorie en overgangsregels bij de bevoegde instantie.</p><ul class="lesson-list">'+
+  '<li><a href="https://economie.fgov.be/nl/themas/energie/bronnen-en-dragers-van-energie/elektriciteit/veiligheid-en-controle-van/controle-van-niet" target="_blank" rel="noopener noreferrer">FOD Economie — AREI en elektrische installaties ↗</a></li>'+
+  '<li><a href="https://www.vlaanderen.be/erkenning-als-koeltechnicus" target="_blank" rel="noopener noreferrer">Vlaanderen — erkenning als koeltechnicus ↗</a></li>'+
+  '<li><a href="https://eur-lex.europa.eu/legal-content/nl/TXT/?uri=CELEX:32024R2215" target="_blank" rel="noopener noreferrer">EU 2024/2215 — certificering koeltechniek ↗</a></li></ul>';
+ }
+ if(c.id===10 && tab!=="toets"){
+  content += '<div class="mini-separator"></div><p>Bron: <a href="https://www.vlaanderen.be/epb-pedia/technieken/ventilatie/ventilatiesystemen" target="_blank" rel="noopener noreferrer">Vlaanderen — ventilatiesystemen A, B, C en D ↗</a></p>';
+ }
  var prev=c.id>1?'<button class="btn btn-ghost" data-action="open-lesson" data-id="'+(c.id-1)+'">← Vorige module</button>':'<span></span>';
  var next=c.id<chapters.length?'<button class="btn btn-ghost" data-action="open-lesson" data-id="'+(c.id+1)+'">Volgende module →</button>':'<span></span>';
  return '<section class="lesson-header"><div><span class="eyebrow">'+html(g.name.toUpperCase())+' / MODULE '+String(c.id).padStart(2,"0")+'</span><h1>'+html(c.title)+'</h1><p>'+html(c.summary)+'</p></div><div class="lesson-actions"><button class="round-action '+(fav?"active":"")+'" data-action="favorite" data-id="'+c.id+'">'+(fav?"★ Bewaard":"☆ Bewaar les")+'</button><button class="round-action" data-action="goto" data-page="leerpad">← Overzicht</button></div></section>'+
