@@ -24,7 +24,7 @@ add(M("Gevorderde elektriciteit","basis","🔌",65,"Motoren, relais, beveiliging
 "Maak onderscheid tussen hoofdstroomkring en stuurkring.|Een thermische motorbeveiliging beschermt tegen ongewenste overbelasting binnen zijn ontwerp.|Een frequentieregelaar regelt de snelheid van geschikte wisselstroommotoren via een veranderende uitgangsfrequentie.",
 "Bij een luchtbehandelingskast geeft de regelaar een startcommando. De contactor trekt aan of de frequentieregelaar start de ventilator. Beveiligingen onderbreken de werking bij een storing.",
 "Verbind nooit zomaar een motor met een andere spanning of schakelconfiguratie. Controleer typeplaatje, datasheet en schema.",
-"nₛ = 120 × f / p (omw/min; p = polental; asynchrone rotor draait trager door slip)","motor",[
+"nₛ = 120 × f / p (omw/min; p = aantal polen; asynchrone rotor draait trager door slip)","motor",[
 Q("Wat doet een contactor in een HVAC-stuurkring?","Elektrisch een vermogenskring schakelen","Een koelmiddel mechanisch comprimeren","De luchtdruk in een kanaal meten","Water ontkalken","De spoel bedient contacten die de vermogenskring schakelen."),
 Q("Welke component wordt vaak gebruikt voor toerentalregeling van een geschikte AC-motor?","Frequentieregelaar (VFD)","Smeltzekering","Drukschakelaar","Expansievat","Een VFD verandert onder meer de uitgangsfrequentie en daarmee het toerental.")
 ]));
